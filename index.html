@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap" rel="stylesheet">
         
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -45,39 +46,152 @@
 </style>
 
 <style>
-    /* Default for DESKTOP screens */
-    .hero__item {
+    /* Apply the gradient to the entire page body and make it stationary */
+    body {
+        background-image: linear-gradient(to bottom, #0a0119, #0041ff) !important;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    /* Make all sections transparent so the body background shows through */
+    .header, .hero, .services, .callto, .footer {
+        background-color: transparent !important;
+        background-image: none !important;
+    }
+
+    /* DESKTOP HERO: Restore the background image for the hero section on desktop */
+    .hero__item.set-bg {
+        background-image: url('img/hero/hero-1.jpg') !important;
         background-size: cover !important;
         background-position: center center !important;
     }
+    
+    /* ========= AESTHETIC UPGRADES: SHADOWS & DEPTH ========= */
+    
+    /* Add a subtle shadow to the main hero text for readability */
+    .hero__text h2 a, .hero__text span {
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    }
 
-    /* These rules ONLY apply to MOBILE screens */
+    /* Give buttons a shadow to make them pop, and a slight lift on hover */
+    .primary-btn {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 1;
+        background: transparent;
+    }
+    .primary-btn:hover {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+        transform: translateY(-2px);
+    }
+    
+    /* FIX: Rebuild the button border animation to ensure it works */
+    .primary-btn::before, .primary-btn::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        transition: all 0.7s;
+    }
+    .primary-btn::before {
+        top: 0;
+        left: 0;
+        width: 30px;
+        height: 30px;
+        border-top: 2px solid #00bfe7;
+        border-left: 2px solid #00bfe7;
+    }
+    .primary-btn::after {
+        bottom: 0;
+        right: 0;
+        width: 30px;
+        height: 30px;
+        border-bottom: 2px solid #00bfe7;
+        border-right: 2px solid #00bfe7;
+    }
+    .primary-btn:hover::before, .primary-btn:hover::after,
+    .primary-btn:active::before, .primary-btn:active::after {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Add a subtle card-like shadow to service items */
+    .services__item {
+        border-radius: 8px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        background: rgba(10, 1, 25, 0.3); /* Semi-transparent background for a layered feel */
+        padding: 30px 25px;
+        height: 100%;
+    }
+    .services__item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Add a hover effect to social media icons */
+    .header__nav__social a, .footer__top__social a {
+        transition: all 0.3s ease;
+    }
+    .header__nav__social a:hover, .footer__top__social a:hover {
+        transform: scale(1.2);
+        color: #00bfe7 !important; /* The template's accent color */
+    }
+
+
+    /* MOBILE VIEW: Rules for mobile screens */
     @media (max-width: 768px) {
         
-        /* Set solid background color for mobile */
+        /* FINAL FIX: Remove all borders and boxes from the mobile header and menu */
+        .header {
+            border-bottom: none !important;
+        }
+        .slicknav_menu, .slicknav_btn {
+            background: transparent !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Hide the "MENU" text in the mobile navigation */
+        .slicknav_menu .slicknav_btn .slicknav_menutxt {
+            display: none !important;
+        }
+
+        /* Ensure the hamburger icon bars are white */
+        .slicknav_menu .slicknav_btn .slicknav_icon-bar {
+            background-color: white !important;
+        }
+        
+        /* Make the text inside the opened mobile menu WHITE */
+        .slicknav_nav a {
+            color: white !important;
+        }
+        .slicknav_nav a:hover {
+            color: #c0c0c0 !important; /* Optional: a slightly dimmer white for hover */
+        }
+
+        /* Hide the hero image on mobile to reveal the body's gradient */
         .hero__item.set-bg {
-             background-image: none !important; /* Remove any image */
-             background-color: #0041ff !important; /* Apply solid color */
+             background-image: none !important;
         }
 
-        .hero__item {
-            /* Now that the background is a solid color, 'cover' is not needed for image sizing */
-            padding-top: 200px !important;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
+        /* Center the text on mobile without breaking the animations */
         .hero__text {
-            /* Centers all the text and the button */
             text-align: center;
         }
         
-        /* Ensures the text container is centered */
         .hero .row .col-lg-6 {
             width: 100%;
             max-width: 90%;
             flex: 0 0 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Reduce font size for RENDERQ MEDIA on mobile */
+        .header__logo {
+            font-size: 20px !important; 
         }
     }
 </style>
@@ -92,21 +206,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
-                    <div class="header__logo" style="color: white; font-size: 24px; font-family: Sora ; font-weight: bold; ">
-                        <a href="./index.html">RENDERQ MEDIA</a>
+                    <div class="header__logo" style="color: white; font-size: 24px; font-family: 'Sora', sans-serif; font-weight: 700;">
+                        <a href="#">RENDERQ MEDIA</a>
                     </div>
                 </div>
                 <div class="col-lg-10">
                     <div class="header__nav__option">
                         <nav class="header__nav__menu mobile-menu">
                             <ul>
-                                <li class="active"><a href="./index.html">Home</a></li>
+                                <li class="active"><a href="#">Home</a></li>
                                 <li><a href="./about.html">About</a></li>
-                                <li><a href="./services.html">Services</a></li>
+                                <li><a href="#services">Services</a></li>
                                 <li><a href="./careers.html" target="_blank">Careers</a></li>
                                 <li><a href="./portfolio.html">Portfolio</a></li>
                                 <li><a href="./online-lectures.html" target="_blank">Academy</a></li>
-                                <li><a href="./contact.html">Contact</a></li>
+                                <li><a href="#contact">Contact</a></li>
                             </ul>
                         </nav>
                         <div class="header__nav__social">
@@ -177,7 +291,7 @@
             </div>
         </div>
     </section>
-    <section class="services spad">
+    <section id="services" class="services spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
@@ -233,14 +347,14 @@
             </div>
         </div>
     </section>
-    <section class="callto spad set-bg  my-1"  style="color:white">
+    <section id="contact" class="callto spad set-bg  my-1">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="callto__text text-center">
-                        <h2 style="color:black" >Elevate your brand's digital footprint with our comprehensive social media, </h2>
-                        <p  style="color:black" >film production, graphic design, and content creation services.</p>
-                        <a href="contact.html">Contact us</a>
+                    <div class="text-center">
+                        <h2 style="color:white;" >Elevate your brand's digital footprint with our comprehensive social media, </h2>
+                        <p style="color:white;" >film production, graphic design, and content creation services.</p>
+                        <a href="#contact" class="primary-btn">Contact us</a>
                     </div>
                 </div>
             </div>
@@ -251,7 +365,7 @@
             <div class="footer__top">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <div class="footer__top__logo" style="color: white; font-size: 24px; font-family: sora ; font-weight: bold;  cursor: pointer; ">
+                        <div class="footer__top__logo" style="color: white; font-size: 24px; font-family: 'Sora', sans-serif; font-weight: 700;">
                             RENDERQ MEDIA
                         </div>
                     </div>
@@ -310,6 +424,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     
     <script src="js/main.js"></script>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script>
+      // Initialize Lenis with custom settings for a ~30% slower and smoother effect
+      const lenis = new Lenis({
+        duration: 2.4, // Increased from 1.8 for slower link scrolling
+        lerp: 0.05,    // Decreased from 0.07 for a longer coasting effect
+        smoothWheel: true,
+      })
+
+      function raf(time) {
+        lenis.raf(time)
+        requestAnimationFrame(raf)
+      }
+
+      requestAnimationFrame(raf)
+    </script>
 
 </body>
 
