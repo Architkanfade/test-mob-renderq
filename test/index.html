@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="RenderQ">
+    <meta name="keywords" content="RenderQ, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RenderQ Media</title>
+    <link rel="shortcut icon" href="img/logo/RQ-BlueBg 4.png" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+        
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+      </script>
+
+<style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+    }
+</style>
+
+<style>
+    /* Default for DESKTOP screens */
+    .hero__item {
+        background-size: cover !important;
+        background-position: center center !important;
+    }
+
+    /* These rules ONLY apply to MOBILE screens */
+    @media (max-width: 768px) {
+        
+        /* Set solid background color for mobile */
+        .hero__item.set-bg {
+             background-image: none !important; /* Remove any image */
+             background-color: #0041ff !important; /* Apply solid color */
+        }
+
+        .hero__item {
+            /* Now that the background is a solid color, 'cover' is not needed for image sizing */
+            padding-top: 200px !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero__text {
+            /* Centers all the text and the button */
+            text-align: center;
+        }
+        
+        /* Ensures the text container is centered */
+        .hero .row .col-lg-6 {
+            width: 100%;
+            max-width: 90%;
+            flex: 0 0 100%;
+        }
+    }
+</style>
+</head>
+
+<body>
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo" style="color: white; font-size: 24px; font-family: Sora ; font-weight: bold; ">
+                        <a href="./index.html">RENDERQ MEDIA</a>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="header__nav__option">
+                        <nav class="header__nav__menu mobile-menu">
+                            <ul>
+                                <li class="active"><a href="./index.html">Home</a></li>
+                                <li><a href="./about.html">About</a></li>
+                                <li><a href="./services.html">Services</a></li>
+                                <li><a href="./careers.html" target="_blank">Careers</a></li>
+                                <li><a href="./portfolio.html">Portfolio</a></li>
+                                <li><a href="./online-lectures.html" target="_blank">Academy</a></li>
+                                <li><a href="./contact.html">Contact</a></li>
+                            </ul>
+                        </nav>
+                        <div class="header__nav__social">
+                            <a href="https://twitter.com/renderqmedia" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/renderqmedia/" target="_blank"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/company/renderq-media-private-limited/?viewAsMember=true" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://www.youtube.com/@renderqmedia" target="_blank"><i class="fa fa-youtube-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="hero__slider owl-carousel">
+            <div class="hero__item set-bg" data-setbg="img/hero/hero-1.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero__text">
+                                <span>Where Media Creativity Knows No Bounds</span>
+                                <h2><a href="https://youtube.com/playlist?list=PL75AIuAOJbav7vKTF204747lKQI169SwB&si=HyrTVmAkJ6UoRe8g">FILM PRODUCTION & VFX</a></h2>
+                                <a href="about.html" class="primary-btn">See more about us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__item set-bg" data-setbg="img/hero/hero-1.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero__text">
+                                <span>Where Media Creativity Knows No Bounds</span>
+                                <h2><a href="https://www.behance.net/gallery/179921081/Cinematography-Event-Videos">VIDEO & PHOTO EDITING</a></h2>
+                                <a href="about.html" class="primary-btn">See more about us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__item set-bg" data-setbg="img/hero/hero-1.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero__text">
+                                <span>Where Media Creativity Knows No Bounds</span>
+                                <h2>GRAPHIC DESIGNING</h2>
+                                <a href="about.html" class="primary-btn">See more about us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__item set-bg" data-setbg="img/hero/hero-1.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero__text">
+                                <span>Where Media Creativity Knows No Bounds</span>
+                                <h2>CONTENT WRITING</h2>
+                                <a href="about.html" class="primary-btn">See more about us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="services spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="services__title">
+                        <div class="section-title">
+                            <span>Our services</span>
+                            <h2>What We do?</h2>
+                        </div>
+                        <p>Elevate your brand's digital footprint with our comprehensive suite of social media solutions. From content creation to audience engagement, we've got you covered. Harness the power of social platforms and watch your online presence thrive.</p>
+                        <a href="#" class="primary-btn">View all services</a>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="services__item">
+                                <div >
+                                    <img src="img/icons/si-3.png" alt="">
+                                </div>
+                                <h4>FILM PRODUCTION </h4>
+                                <p>Comprehensive film production services from script to screen</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="services__item">
+                                <div >
+                                    <img src="img/icons/si-1.png" alt="">
+                                </div>
+                                <h4>GRAPHIC DESIGN</h4>
+                                <p>Elevate your brand with captivating graphic design solutions tailored uniquely.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="services__item">
+                                <div >
+                                    <img src="img/icons/si-2.png" alt="">
+                                </div>
+                                <h4>PHOTO & VIDEO EDITING</h4>
+                                <p> Refine your visuals with expert photo and video editing services </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="services__item">
+                                <div >
+                                    <img src="img/icons/si-4.png" alt="">
+                                </div>
+                                <h4 >Content Writing</h4>
+                                <p>Crafting compelling content tailored to engage, inform, and inspire audiences.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="callto spad set-bg  my-1"  style="color:white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="callto__text text-center">
+                        <h2 style="color:black" >Elevate your brand's digital footprint with our comprehensive social media, </h2>
+                        <p  style="color:black" >film production, graphic design, and content creation services.</p>
+                        <a href="contact.html">Contact us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="footer__top__logo" style="color: white; font-size: 24px; font-family: sora ; font-weight: bold;  cursor: pointer; ">
+                            RENDERQ MEDIA
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="footer__top__social">
+                            <a href="https://twitter.com/renderqmedia" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/renderqmedia/" target="_blank"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/company/renderq-media-private-limited/?viewAsMember=true" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://www.youtube.com/@renderqmedia" target="_blank"><i class="fa fa-youtube-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__option">
+                <div class=" md:flex-row  flex flex-col justify-between items-center ">
+                    <div class="col-lg-10 col-md-6 col-sm-12">
+                        <div class="footer__option__item">
+                            <h5>About us</h5>
+                            <p>Just Ad to RenderQ</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-2  col-md-6 col-sm-12">
+                        <div class="footer__option__item">
+                            <h5>Who we are</h5>
+                            <ul>
+                                <li><a href="#">Team</a></li>
+                                <li><a href="./careers.html">Careers</a></li>
+                                <li><a href="contact.html">Contact us</a></li>
+                                <li><a href="#">Locations</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__copyright">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <p class="footer__copyright__text">Copyright &copy;
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>
+                            All rights reserved | made with <i class="fa fa-heart-o"
+                                aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">RenderQ</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/jquery.slicknav.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
