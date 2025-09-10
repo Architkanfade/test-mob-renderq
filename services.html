@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     
 <style>
-    /* Apply the gradient to the entire page body and make it stationary */
+    /* UNIVERSAL STYLES */
     body {
         background-image: linear-gradient(to bottom, #0a0119, #0041ff) !important;
         background-attachment: fixed;
@@ -32,15 +32,31 @@
     }
 
     /* Make all sections transparent so the body background shows through */
-    .header, .services, .callto, .footer, .about, .testimonial, .services-page, .portfolio, .blog, .contact-widget, .contact, .breadcrumb-option {
+    .header, .hero, .services, .callto, .footer, .about, .testimonial, .services-page, .portfolio, .blog, .contact-widget, .contact, .breadcrumb-option, .logo {
         background: transparent !important;
     }
     
     /* AESTHETIC UPGRADES */
+    
     .breadcrumb__text h2 {
         text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
     }
 
+    /* Button styles and hover effects */
+    .primary-btn, .callto__text a {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 1;
+        background: transparent;
+        border: none; /* Override default button borders if any */
+    }
+    .primary-btn:hover, .callto__text a:hover {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+        transform: translateY(-2px);
+    }
+    
+    /* Card-like shadow for service items */
     .services__item {
         border-radius: 8px;
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
@@ -48,24 +64,37 @@
         background: rgba(10, 1, 25, 0.3);
         padding: 30px 25px;
         height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
     .services__item:hover {
         transform: translateY(-5px);
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
+    
+    /* Hover effect for social media icons */
+    .header__nav__social a, .footer__top__social a {
+        transition: all 0.3s ease;
+    }
+    .header__nav__social a:hover, .footer__top__social a:hover {
+        transform: scale(1.2);
+        color: #00bfe7 !important;
+    }
 
-    /* Ensure footer text is white and visible */
+    /* Footer text color */
     .footer__option__item h5, .footer__option__item p, .footer__option__item ul li a {
         color: white !important;
         text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
     }
 
-    /* Force header items to align properly on one line */
+    /* Header alignment fix */
     .header .row {
         align-items: center;
     }
 
-    /* MOBILE VIEW: Rules for mobile screens */
+    /* MOBILE VIEW STYLES */
     @media (max-width: 991px) {
         .header {
             border-bottom: none !important;
@@ -153,16 +182,16 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="services__item">
-                        <div >
+                        <div>
                             <img src="img/icons/si-3.png" alt="">
                         </div>
                         <h4>FILM PRODUCTION</h4>
-                        <p >Comprehensive film production services from script to screen</p>
+                        <p>Comprehensive film production services from script to screen</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="services__item">
-                        <div >
+                        <div>
                             <img src="img/icons/si-1.png" alt="">
                         </div>
                         <h4>GRAPHIC DESIGN</h4>
@@ -171,16 +200,16 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="services__item">
-                        <div >
+                        <div>
                             <img src="img/icons/si-2.png" alt="">
                         </div>
                         <h4>PHOTO & VIDEO EDITING</h4>
-                        <p >Refine your visuals with expert photo and video editing services</p>
+                        <p>Refine your visuals with expert photo and video editing services</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="services__item">
-                        <div >
+                        <div>
                             <img src="img/icons/si-4.png" alt="">
                         </div>
                         <h4>Content Writing</h4>
@@ -198,7 +227,7 @@
                         <div class="callto__text">
                             <h2>WHERE MEDIA CREATIVITY KNOWS NO BOUNDS</h2>
                             <p>From content creation to audience engagement, we've got you covered. Harness the power of social platforms and watch your online presence thrive</p>
-                            <a href="contact.html" class="primary-btn">Start your stories</a>
+                            <a href="contact.html">Start your stories</a>
                         </div>
                     </div>
                 </div>
@@ -206,7 +235,6 @@
         </div>
     </section>
     <div class="logo spad">
-        
     </div>
     <footer class="footer">
         <div class="container">
