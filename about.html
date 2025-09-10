@@ -1,371 +1,388 @@
 <!DOCTYPE html>
 <html lang="zxx">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="description" content="RenderQ " />
     <meta name="keywords" content="RenderQ, unica, creative, html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>RenderQ Media</title>
+    <title>RenderQ Media - About Us</title>
     <link rel="shortcut icon" href="img/logo/RQ-BlueBg 4.png" type="image/x-icon">
 
-    <!-- Google Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Css Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap" rel="stylesheet">
+        
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css" />
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
+    
+<style>
+    /* Apply the gradient to the entire page body and make it stationary */
+    body {
+        background-image: linear-gradient(to bottom, #0a0119, #0041ff) !important;
+        background-attachment: fixed;
+        background-size: cover;
+    }
 
-  <body>
-    <!-- Page Preloder -->
+    /* Make all sections transparent so the body background shows through */
+    .header, .hero, .services, .callto, .footer, .about, .testimonial, .services-page, .portfolio, .blog, .contact-widget, .contact, .breadcrumb-option {
+        background-color: transparent !important;
+        background-image: none !important;
+    }
+    
+    /* AESTHETIC UPGRADES: SHADOWS & DEPTH */
+    
+    .breadcrumb__text h2 {
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Give buttons a stronger shadow and lift on hover */
+    .primary-btn {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 1;
+        background: transparent;
+    }
+    .primary-btn:hover {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+        transform: translateY(-2px);
+    }
+    
+    /* Button border animation */
+    .primary-btn::before, .primary-btn::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        transition: all 0.7s;
+    }
+    .primary-btn::before {
+        top: 0;
+        left: 0;
+        width: 30px;
+        height: 30px;
+        border-top: 2px solid #00bfe7;
+        border-left: 2px solid #00bfe7;
+    }
+    .primary-btn::after {
+        bottom: 0;
+        right: 0;
+        width: 30px;
+        height: 30px;
+        border-bottom: 2px solid #00bfe7;
+        border-right: 2px solid #00bfe7;
+    }
+    .primary-btn:hover::before, .primary-btn:hover::after,
+    .primary-btn:active::before, .primary-btn:active::after {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Card-like shadow for service items and about text */
+    .services__item, .about__text, .testimonial__item {
+        border-radius: 8px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        background: rgba(10, 1, 25, 0.3);
+        padding: 30px 25px;
+        height: 100%;
+    }
+    .services__item:hover, .about__text:hover, .testimonial__item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Hover effect and shadow for social media icons */
+    .header__nav__social a, .footer__top__social a {
+        transition: all 0.3s ease;
+        text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.8);
+    }
+    .header__nav__social a:hover, .footer__top__social a:hover {
+        transform: scale(1.2);
+        color: #00bfe7 !important;
+        text-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
+    }
+
+    /* Ensure footer text is white and visible */
+    .footer__option__item h5, .footer__option__item p, .footer__option__item ul li a {
+        color: white !important;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    /* MOBILE VIEW: Rules for mobile screens */
+    @media (max-width: 768px) {
+        
+        .header {
+            border-bottom: none !important;
+        }
+        .slicknav_menu, .slicknav_btn {
+            background: transparent !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        .slicknav_menu .slicknav_btn .slicknav_menutxt {
+            display: none !important;
+        }
+
+        .slicknav_menu .slicknav_btn .slicknav_icon-bar {
+            background-color: white !important;
+        }
+        
+        .slicknav_nav a {
+            color: white !important;
+        }
+        .slicknav_nav a:hover {
+            color: #c0c0c0 !important;
+        }
+        
+        .header__logo {
+            font-size: 20px !important; 
+        }
+    }
+</style>
+</head>
+
+<body>
     <div id="preloder">
-      <div class="loader"></div>
+        <div class="loader"></div>
     </div>
 
-    <!-- Header Section Begin -->
     <header class="header">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-2">
-            <div
-              class="header__logo"
-              style="
-                color: white;
-                font-size: 24px;
-                font-family: sora;
-                font-weight: bold;
-                cursor: pointer;
-              "
-            >
-            <a href="./index.html">RENDERQ MEDIA</a>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo" style="color: white; font-size: 24px; font-family: 'Sora', sans-serif; font-weight: 700;">
+                        <a href="./index.html">RENDERQ MEDIA</a>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="header__nav__option">
+                        <nav class="header__nav__menu mobile-menu">
+                            <ul>
+                                <li><a href="./index.html">Home</a></li>
+                                <li class="active"><a href="./about.html">About</a></li>
+                                <li><a href="./services.html">Services</a></li>
+                                <li><a href="./careers.html" target="_blank">Careers</a></li>
+                                <li><a href="./portfolio.html">Portfolio</a></li>
+                                <li><a href="./online-lectures.html" target="_blank">Academy</a></li>
+                                <li><a href="./contact.html">Contact</a></li>
+                            </ul>
+                        </nav>
+                        <div class="header__nav__social">
+                            <a href="https://twitter.com/renderqmedia" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/renderqmedia/" target="_blank"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/company/renderq-media-private-limited/?viewAsMember=true" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://www.youtube.com/@renderqmedia" target="_blank"><i class="fa fa-youtube-play"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-lg-10">
-            <div class="header__nav__option">
-              <nav class="header__nav__menu mobile-menu">
-                <ul>
-                  <li><a href="./index.html">Home</a></li>
-                  <li class="active"><a href="./about.html">About</a></li>
-                  <li><a href="./services.html">Services</a></li>
-                  <li><a href="./careers.html" target="_blank">Careers</a></li>
-                  <li><a href="./portfolio.html">Portfolio</a></li>
-                  <li><a href="./online-lectures.html" target="_blank">Academy</a></li>
-                  <!--<li><a href="https://rohitbhoyar.zohothrive.in/thrive/publicpages/affiliate-registration/rohitbhoyar/9b3ccf4004d3a7a10b1e41a30e5d9d85c961263e02c406a82018c3f56b1ab7d4" target="_blank">Affiliate Program</a></li>-->
-                  <li><a href="./contact.html">Contact</a></li>
-                </ul>
-              </nav>
-              <div class="header__nav__social">
-                <a href="https://twitter.com/renderqmedia" target="_blank"
-                  ><i class="fa fa-twitter"></i
-                ></a>
-
-                <a
-                  href="https://www.instagram.com/renderqmedia/"
-                  target="_blank"
-                  ><i class="fa fa-instagram"></i
-                ></a>
-                <a
-                  href="https://www.linkedin.com/company/renderq-media-private-limited/?viewAsMember=true"
-                  target="_blank"
-                  ><i class="fa fa-linkedin"></i
-                ></a>
-                <a href="https://www.youtube.com/@renderqmedia" target="_blank"
-                  ><i class="fa fa-youtube-play"></i
-                ></a>
-              </div>
-            </div>
-          </div>
+            <div id="mobile-menu-wrap"></div>
         </div>
-        <div id="mobile-menu-wrap"></div>
-      </div>
     </header>
-    <!-- Header End -->
-
-    <!-- Breadcrumb Begin -->
-    <div
-      class="breadcrumb-option spad set-bg"
-      data-setbg="img/breadcrumb-bg.jpg"
-    >
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <div class="breadcrumb__text">
-              <h2>About us</h2>
-              <div class="breadcrumb__links">
-                <a href="#">Home</a>
-                <span>About</span>
-              </div>
+    <section class="breadcrumb-option spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>About us</h2>
+                        <div class="breadcrumb__links">
+                            <a href="./index.html">Home</a>
+                            <span>About</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-    <!-- Breadcrumb End -->
-
-    <!-- About Section Begin -->
+    </section>
     <section class="about spad">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="about__pic">
-              <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                  <div
-                    class="about__pic__item about__pic__item--large set-bg"
-                    data-setbg="img/about/about-1.jpg"
-                  ></div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div
-                        class="about__pic__item set-bg"
-                        data-setbg="img/about/about-2.jpg"
-                      ></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="about__pic">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="about__pic__item about__pic__item--large set-bg" data-setbg="img/about/about-1.jpg"></div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="about__pic__item set-bg" data-setbg="img/about/about-2.jpg"></div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="about__pic__item set-bg" data-setbg="img/about/about-3.jpg"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-12">
-                      <div
-                        class="about__pic__item set-bg"
-                        data-setbg="img/about/about-3.jpg"
-                      ></div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about__text">
+                        <div class="section-title">
+                            <span>About RenderQ</span>
+                            <h2>Who we are?</h2>
+                        </div>
+                        <div class="about__text__desc">
+                            <p>Google the best Video Editing Company in Nagpur, we'll be there to say "hi".</p>
+                            <p>We are a leading video production company in Central India. From scripts, to video shoot, to video editing, to promotional Ads; We've got you covered. Elevate your brand's digital footprint with our comprehensive suite of social media solutions. From content creation to website SEO, we've got you covered. Harness the power of social platforms and watch your online presence thrive.</p>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="about__text">
-              <div class="section-title">
-                <span>About RenderQ</span>
-                <h2>Who we are?</h2>
-              </div>
-
-              <div class="about__text__desc">
-                <p>
-                  Google the best Video Editing Company in Nagpur, we'll be there to say "hi".
-                </p>
-                <div class="section-title">
-                  <span>
-                  <h2>
-
-                    
-                  </h2>
-                  </span>
-                </div>
-                
-                <p>
-                  We are a leading video production company in Central India.
-                  From scripts, to video shoot, to video editing, to promotional Ads;
-                  We've got you covered. 
-                  Elevate your brand's digital footprint with our comprehensive
-                  suite of social media solutions. From content creation to
-                  website SEO, we've got you covered. Harness the power
-                  of social platforms and watch your online presence thrive.
-
-                  
-                </p>
-                
-                
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </section>
-    <!-- About Section End -->
-
-    <!-- Testimonial Section Begin -->
-    <section
-      class="testimonial spad set-bg"
-      data-setbg="img/testimonial-bg.jpg"
-    >
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="section-title center-title">
-              <span>Loved By Clients</span>
-              <h2>What clients say?</h2>
+    <section class="testimonial spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title center-title">
+                        <span>Loved By Clients</span>
+                        <h2>What clients say?</h2>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div class="row">
+                <div class="testimonial__slider owl-carousel">
+                    <div class="col-lg-4">
+                        <div class="testimonial__item">
+                            <div class="testimonial__text">
+                                <p>From raw footage to cinematic masterpiece, they transformed our vision into reality. My first hire and I love their work. Definately go for them if you want high quality work in Nagpur.</p>
+                            </div>
+                            <div class="testimonial__author">
+                                <div class="testimonial__author__pic">
+                                    <img src="img/reviews/Tharun.jpeg" alt="" />
+                                </div>
+                                <div class="testimonial__author__text">
+                                    <h5>Tharun Naik</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="testimonial__item">
+                            <div class="testimonial__text">
+                                <p>Working with RenderQ Media has been an absolute pleasure, as they consistently deliver high-quality, engaging videos that have significantly boosted our marketing efforts.</p>
+                            </div>
+                            <div class="testimonial__author">
+                                <div class="testimonial__author__pic">
+                                    <img src="img/reviews/Shakti Kartikeyan.jpeg" alt="" />
+                                </div>
+                                <div class="testimonial__author__text">
+                                    <h5>Shakti Kartikeyan</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="testimonial__item">
+                            <div class="testimonial__text">
+                                <p>Their editing magic breathed life into our story, captivating audiences from start to finish, A seamless blend of creativity and technical expertise, elevating our brand to new heights</p>
+                            </div>
+                            <div class="testimonial__author">
+                                <div class="testimonial__author__pic">
+                                    <img src="img/reviews//Rakshita.jpeg" alt="" />
+                                </div>
+                                <div class="testimonial__author__text">
+                                    <h5>Rakshita Singh</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row">
-          <div class="testimonial__slider owl-carousel">
-            
-            <div class="col-lg-4">
-              <div class="testimonial__item">
-                <div class="testimonial__text">
-                  <p>
-                    From raw footage to cinematic masterpiece, they transformed
-                    our vision into reality.
-                    My first hire and I love their work. Definately go for them
-                    if you want high quality work in Nagpur.
-                  </p>
-                </div>
-                <div class="testimonial__author">
-                  <div class="testimonial__author__pic">
-                    <img src="img/reviews/Tharun.jpeg" alt="" />
-                  </div>
-                  <div class="testimonial__author__text">
-                    <h5>Tharun Naik</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="testimonial__item">
-                <div class="testimonial__text">
-                  <p>
-                    Working with RenderQ Media has been an absolute pleasure, as
-                    they consistently deliver high-quality, engaging videos that
-                    have significantly boosted our marketing efforts.
-                  </p>
-                </div>
-                <div class="testimonial__author">
-                  <div class="testimonial__author__pic">
-                    <img src="img/reviews/Shakti Kartikeyan.jpeg" alt="" />
-                  </div>
-                  <div class="testimonial__author__text">
-                    <h5>Shakti Kartikeyan</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="testimonial__item">
-                <div class="testimonial__text">
-                  <p>
-                    Their editing magic breathed life into our story,
-                    captivating audiences from start to finish, A seamless blend
-                    of creativity and technical expertise, elevating our brand
-                    to new heights
-                  </p>
-                </div>
-                <div class="testimonial__author">
-                  <div class="testimonial__author__pic">
-                    <img src="img/reviews//Rakshita.jpeg" alt="" />
-                  </div>
-                  <div class="testimonial__author__text">
-                    <h5>Rakshita Singh</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-         
-          </div>
-        </div>
-      </div>
     </section>
-    <!-- Testimonial Section End -->
-
-    <!-- Footer Section Begin -->
     <footer class="footer">
-      <div class="container">
-        <div class="footer__top">
-          <div class="row">
-            <div class="col-lg-6 col-md-6">
-              <div
-                class="footer__top__logo"
-                style="
-                  color: white;
-                  font-size: 24px;
-                  font-family: Sora;
-                  font-weight: bold;
-                "
-              >
-                RENDERQ MEDIA
-              </div>
+        <div class="container">
+            <div class="footer__top">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="footer__top__logo" style="color: white; font-size: 24px; font-family: 'Sora', sans-serif; font-weight: 700;">
+                            RENDERQ MEDIA
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="footer__top__social">
+                            <a href="https://twitter.com/renderqmedia" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/renderqmedia/" target="_blank"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/company/renderq-media-private-limited/?viewAsMember=true" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://www.youtube.com/@renderqmedia" target="_blank"><i class="fa fa-youtube-play"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-6 col-md-6">
-              <div class="footer__top__social">
-                <a href="https://twitter.com/renderqmedia" target="_blank"
-                  ><i class="fa fa-twitter"></i
-                ></a>
-
-                <a
-                  href="https://www.instagram.com/renderqmedia/"
-                  target="_blank"
-                  ><i class="fa fa-instagram"></i
-                ></a>
-                <a
-                  href="https://www.linkedin.com/company/renderq-media-private-limited/?viewAsMember=true"
-                  target="_blank"
-                  ><i class="fa fa-linkedin"></i
-                ></a>
-                <a href="https://www.youtube.com/@renderqmedia" target="_blank"
-                  ><i class="fa fa-youtube-play"></i
-                ></a>
-              </div>
+            <div class="footer__option">
+                <div class="row">
+                    <div class="col-lg-10 col-md-6">
+                        <div class="footer__option__item">
+                            <h5>About us</h5>
+                            <p>Just Ad to RenderQ</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="footer__option__item">
+                            <h5>Who we are</h5>
+                            <ul>
+                                <li><a href="#">Team</a></li>
+                                <li><a href="./careers.html" target="_blank">Careers</a></li>
+                                <li><a href="contact.html">Contact us</a></li>
+                                <li><a href="#">Locations</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div class="footer__copyright">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <p class="footer__copyright__text">
+                            Copyright &copy;
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>
+                            All rights reserved | made with
+                            <i class="fa fa-heart-o" aria-hidden="true"></i> by
+                            <a href="https://colorlib.com" target="_blank">RENDERQ </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="footer__option">
-          <div
-            class="md:flex-row flex flex-col w-full justify-between items-center"
-          >
-            <div class="col-lg-10 col-md-6 col-sm-12">
-              <div class="footer__option__item">
-                <h5>About us</h5>
-                <p>Just Ad to RenderQ</p>
-              </div>
-            </div>
-
-            <div class="col-lg-2 col-md-6 col-sm-12">
-              <div class="footer__option__item">
-                <h5>Who we are</h5>
-                <ul>
-                  <li><a href="#">Team</a></li>
-                  <li><a href="./careers.html" target="_blank">Careers</a></li>
-                  <li><a href="contact.html">Contact us</a></li>
-                  <li><a href="#">Locations</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="footer__copyright">
-          <div class="row">
-            <div class="col-lg-12 text-center">
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              <p class="footer__copyright__text">
-                Copyright &copy;
-                <script>
-                  document.write(new Date().getFullYear());
-                </script>
-                All rights reserved | made with
-                <i class="fa fa-heart-o" aria-hidden="true"></i> by
-                <a href="https://colorlib.com" target="_blank">RENDERQ </a>
-              </p>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </div>
-          </div>
-        </div>
-      </div>
     </footer>
-    <!-- Footer Section End -->
-
-    <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/masonry.pkgd.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/jquery.slicknav.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-  </body>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script>
+      const lenis = new Lenis({
+        duration: 2.4,
+        lerp: 0.05,
+        smoothWheel: true,
+      })
+
+      function raf(time) {
+        lenis.raf(time)
+        requestAnimationFrame(raf)
+      }
+
+      requestAnimationFrame(raf)
+    </script>
+</body>
+
 </html>
