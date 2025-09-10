@@ -58,13 +58,6 @@
         background-color: transparent !important;
         background-image: none !important;
     }
-
-    /* DESKTOP HERO: Restore the background image for the hero section on desktop */
-    .hero__item.set-bg {
-        background-image: url('img/hero/hero-1.jpg') !important;
-        background-size: cover !important;
-        background-position: center center !important;
-    }
     
     /* ========= AESTHETIC UPGRADES: SHADOWS & DEPTH ========= */
     
@@ -145,6 +138,44 @@
         color: white !important; /* Made text white */
         text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Subtle shadow for readability */
     }
+    
+    /* ============ HERO VIDEO BACKGROUND STYLES (ADDED FOR YOU) ============ */
+    .hero {
+        position: relative;
+        overflow: hidden;
+    }
+    #hero-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+        object-fit: cover;
+    }
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 0;
+    }
+    .hero .container {
+        position: relative;
+        z-index: 1;
+    }
+    /* This removes the old background image to prevent conflicts */
+    .hero__item.set-bg {
+        background-image: none !important;
+    }
+    /* ========================================================= */
+
 
     /* MOBILE VIEW: Rules for mobile screens */
     @media (max-width: 768px) {
@@ -172,10 +203,6 @@
         }
         .slicknav_nav a:hover {
             color: #c0c0c0 !important;
-        }
-
-        .hero__item.set-bg {
-             background-image: none !important;
         }
         
         .hero .row .col-lg-6 {
@@ -231,9 +258,16 @@
             <div id="mobile-menu-wrap"></div>
         </div>
     </header>
+
     <section class="hero">
+        
+        <video playsinline autoplay muted loop id="hero-video">
+            <source src="video/FINAL VIDEO DM .mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
         <div class="hero__slider owl-carousel">
-            <div class="hero__item set-bg" data-setbg="img/hero/hero-1.jpg">
+            <div class="hero__item">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -246,7 +280,7 @@
                     </div>
                 </div>
             </div>
-            <div class="hero__item set-bg" data-setbg="img/hero/hero-1.jpg">
+            <div class="hero__item">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -259,7 +293,7 @@
                     </div>
                 </div>
             </div>
-            <div class="hero__item set-bg" data-setbg="img/hero/hero-1.jpg">
+            <div class="hero__item">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -272,7 +306,7 @@
                     </div>
                 </div>
             </div>
-            <div class="hero__item set-bg" data-setbg="img/hero/hero-1.jpg">
+            <div class="hero__item">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -343,6 +377,7 @@
             </div>
         </div>
     </section>
+
     <section id="contact" class="callto spad set-bg  my-1">
         <div class="container">
             <div class="row">
@@ -356,6 +391,7 @@
             </div>
         </div>
     </section>
+
     <footer class="footer">
         <div class="container">
             <div class="footer__top">
@@ -411,6 +447,7 @@
             </div>
         </div>
     </footer>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
