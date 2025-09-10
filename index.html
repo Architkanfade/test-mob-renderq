@@ -139,7 +139,7 @@
         text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Subtle shadow for readability */
     }
     
-    /* ============ HERO VIDEO BACKGROUND STYLES (ADDED FOR YOU) ============ */
+    /* ============ HERO VIDEO BACKGROUND STYLES ============ */
     .hero {
         position: relative;
         overflow: hidden;
@@ -170,11 +170,33 @@
         position: relative;
         z-index: 1;
     }
-    /* This removes the old background image to prevent conflicts */
     .hero__item.set-bg {
         background-image: none !important;
     }
-    /* ========================================================= */
+
+    /* ============ MUTE/UNMUTE BUTTON STYLE ============ */
+    #mute-btn {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        z-index: 2; /* Ensures it's on top of the video overlay */
+        background-color: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        color: white;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.3s ease;
+    }
+
+    #mute-btn:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
 
 
     /* MOBILE VIEW: Rules for mobile screens */
@@ -266,6 +288,10 @@
             Your browser does not support the video tag.
         </video>
 
+        <button id="mute-btn" type="button" aria-label="Mute or unmute video">
+            <i class="fa fa-volume-off" aria-hidden="true"></i>
+        </button>
+
         <div class="hero__slider owl-carousel">
             <div class="hero__item">
                 <div class="container">
@@ -321,6 +347,7 @@
             </div>
         </div>
     </section>
+
     <section id="services" class="services spad">
         <div class="container">
             <div class="row">
@@ -473,6 +500,29 @@
       }
 
       requestAnimationFrame(raf)
+    </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('hero-video');
+            const muteBtn = document.getElementById('mute-btn');
+            const icon = muteBtn.querySelector('i');
+
+            // Sets the video volume to 75%
+            video.volume = 0.75; 
+
+            muteBtn.addEventListener('click', function() {
+                if (video.muted) {
+                    video.muted = false;
+                    icon.classList.remove('fa-volume-off');
+                    icon.classList.add('fa-volume-up');
+                } else {
+                    video.muted = true;
+                    icon.classList.remove('fa-volume-up');
+                    icon.classList.add('fa-volume-off');
+                }
+            });
+        });
     </script>
 
 </body>
