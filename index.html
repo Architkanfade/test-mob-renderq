@@ -210,33 +210,28 @@
     
     /* ============ DESKTOP CARD ENHANCEMENTS (PC VIEW ONLY) ============ */
     @media (min-width: 992px) {
-        /* Add perspective to the parent column for the 3D effect to work */
         .services .col-lg-6 {
             perspective: 1000px;
         }
 
         .services__item {
-            /* Adds the frosted glass effect */
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            -webkit-backdrop-filter: blur(10px); 
             border: 1px solid rgba(255, 255, 255, 0.18);
-            
-            /* Update transition for a smoother 3D hover */
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transform-style: preserve-3d;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
-
+        
         .services__item:hover {
-            /* Applies the 3D tilt and a slight lift */
-            transform: scale(1.05) translateY(-10px) rotateX(8deg) rotateY(-6deg);
-            
-            /* Adds a stronger shadow and a subtle blue glow */
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 191, 231, 0.2);
+            z-index: 10;
         }
     }
     /* ================================================================ */
 
     /* MOBILE VIEW: Rules for mobile screens */
-    @media (max-width: 991px) { /* Changed from 768 to 991 to prevent overlap */
+    @media (max-width: 991px) {
         .header { border-bottom: none !important; }
         .slicknav_menu, .slicknav_btn { background: transparent !important; border: none !important; outline: none !important; box-shadow: none !important; }
         .slicknav_menu .slicknav_btn .slicknav_menutxt { display: none !important; }
@@ -244,6 +239,18 @@
         .slicknav_nav a { color: var(--text-primary) !important; }
         .hero .row .col-lg-6 { width: 100%; max-width: 90%; flex: 0 0 100%; margin-left: auto; margin-right: auto; }
         .header__logo { font-size: 20px !important; }
+    }
+
+    /* Hide the owl-dots (number buttons) */
+    .hero .owl-dots {
+        display: none;
+    }
+
+    /* New styles to align hero text to the bottom */
+    .hero__item {
+        display: flex;
+        align-items: flex-end; /* Pushes content to the bottom */
+        padding-bottom: 50px; /* REDUCED this value to move text lower */
     }
 </style>
 </head>
@@ -373,7 +380,7 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="col-lg-6 col-md-6 col-sm-6 mb-5">
                             <div class="services__item">
                                 <div >
                                     <img src="img/icons/si-3.png" alt="">
@@ -382,7 +389,7 @@
                                 <p>Comprehensive film production services from script to screen</p>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="col-lg-6 col-md-6 col-sm-6 mb-5">
                             <div class="services__item">
                                 <div >
                                     <img src="img/icons/si-1.png" alt="">
@@ -391,7 +398,7 @@
                                 <p>Elevate your brand with captivating graphic design solutions tailored uniquely.</p>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="col-lg-6 col-md-6 col-sm-6 mb-5">
                             <div class="services__item">
                                 <div >
                                     <img src="img/icons/si-2.png" alt="">
@@ -400,7 +407,7 @@
                                 <p> Refine your visuals with expert photo and video editing services </p>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="col-lg-6 col-md-6 col-sm-6 mb-5">
                             <div class="services__item">
                                 <div >
                                     <img src="img/icons/si-4.png" alt="">
@@ -538,12 +545,9 @@
                     icon.classList.add('fa-moon-o');
                 }
             }
-
-            // On page load, apply the saved theme
             const savedTheme = localStorage.getItem('theme') || 'light';
             applyTheme(savedTheme);
 
-            // Listen for clicks on the theme button
             themeToggleBtn.addEventListener('click', function() {
                 const currentTheme = localStorage.getItem('theme') || 'light';
                 const newTheme = currentTheme === 'light' ? 'dark' : 'light';
@@ -553,6 +557,43 @@
         });
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if ('ontouchstart' in window || navigator.maxTouchPoints) {
+                return;
+            }
+
+            const cards = document.querySelectorAll('.services__item');
+            const maxTilt = 6;
+
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const { left, top, width, height } = card.getBoundingClientRect();
+                    const x = e.clientX - left;
+                    const y = e.clientY - top;
+
+                    const centerX = width / 2;
+                    const centerY = height / 2;
+
+                    const deltaX = x - centerX;
+                    const deltaY = y - centerY;
+
+                    const rotateX = (deltaY / centerY) * -maxTilt;
+                    const rotateY = (deltaX / centerX) * maxTilt;
+
+                    card.style.transition = 'transform 0.25s ease-out';
+                    card.style.transform = `scale(1.05) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                    card.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 191, 231, 0.2)';
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transition = 'transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+                    card.style.transform = 'scale(1) perspective(1000px) rotateX(0deg) rotateY(0deg)';
+                    card.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
