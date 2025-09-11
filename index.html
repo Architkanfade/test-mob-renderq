@@ -257,24 +257,26 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
         }
 
-        /* Customizing the 'MENU' button itself */
-        .slicknav_btn {
-            background-color: #00bfe7 !important;
-            border-radius: 5px;
-            padding: 8px 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0, 191, 231, 0.4);
-            transition: all 0.3s ease;
-            right: 15px;
-            top: 15px;
-        }
-        .slicknav_btn:hover {
-            background-color: #00a0c0 !important;
-            box-shadow: 0 6px 20px rgba(0, 191, 231, 0.6);
-            transform: translateY(-1px);
-        }
+       /* Customizing the 'MENU' button itself */
+    .slicknav_btn {
+        /* REMOVE THESE THREE LINES TO GET RID OF THE BLUE BOX */
+        background-color: transparent !important; /* Changed from #00bfe7 */
+        box-shadow: none !important;            /* Changed from 0 4px 15px rgba(0, 191, 231, 0.4) */
+        border-radius: 5px; /* Keep this if you want rounded corners, or set to 0 */
+        
+        padding: 8px 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        right: 15px;
+        top: 15px;
+    }
+    .slicknav_btn:hover {
+        background-color: transparent !important; /* Changed from #00a0c0 */
+        box-shadow: none !important;            /* Changed from 0 6px 20px rgba(0, 191, 231, 0.6) */
+        transform: translateY(-1px);
+    }
 
         /* Styling for menu items */
         .slicknav_nav a {
