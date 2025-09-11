@@ -22,59 +22,83 @@
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
     
 <style>
-    /* UNIVERSAL STYLES */
-    body {
-        background-image: linear-gradient(to bottom, #0a0119, #0041ff) !important;
-        background-attachment: fixed;
-        background-size: cover;
+    /* ==================== THEME VARIABLES ==================== */
+    :root {
+        /* Light Mode (Default Blue Theme) */
+        --bg-gradient: linear-gradient(to bottom, #0a0119, #0041ff);
+        --text-primary: #ffffff;
+        --card-bg: rgba(10, 1, 25, 0.3);
+        --btn-border: #00bfe7;
+        --icon-color: #ffffff;
     }
 
-    /* Make all sections transparent so the body background shows through */
-    .header, .hero, .services, .callto, .footer, .about, .testimonial, .services-page, .portfolio, .blog, .contact-widget, .contact, .breadcrumb-option, .logo {
+    html.dark-mode {
+        /* Dark Mode (Black Theme) */
+        --bg-gradient: #000000;
+        --text-primary: #ffffff;
+        --card-bg: rgba(255, 255, 255, 0.1);
+        --btn-border: #00bfe7;
+        --icon-color: #ffffff;
+    }
+    /* ======================================================== */
+    
+    body {
+        background-image: var(--bg-gradient) !important;
+        background-color: #000;
+        background-attachment: fixed;
+        background-size: cover;
+        color: var(--text-primary);
+        transition: background-image 0.5s ease, background-color 0.5s ease;
+    }
+    
+    .header__logo a, .header__nav__menu ul li a, .footer__copyright__text,
+    .footer__option__item h5, .footer__option__item p, .footer__option__item ul li a,
+    .breadcrumb__text h2, .breadcrumb__links a, .breadcrumb__links span {
+        color: var(--text-primary) !important;
+    }
+    
+    .header, .services-page, .callto, .footer, .breadcrumb-option {
         background: transparent !important;
     }
     
     /* AESTHETIC UPGRADES */
-    
-    .breadcrumb__text h2 {
+    .breadcrumb__text h2, .callto__text h2 {
         text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
     }
 
-    /* Button styles and hover effects */
     .primary-btn, .callto__text a {
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
         transition: all 0.3s ease;
         position: relative;
         z-index: 1;
         background: transparent;
-        border: none; /* Override default button borders if any */
+        border: none;
     }
     .primary-btn:hover, .callto__text a:hover {
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
         transform: translateY(-2px);
     }
     
-    /* Card-like shadow for service items */
     .services__item {
         border-radius: 8px;
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
-        background: rgba(10, 1, 25, 0.3);
-        padding: 30px 25px;
+        background: var(--card-bg);
+        padding: 40px 30px;
         height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         text-align: center;
     }
-    .services__item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    }
     
-    /* Hover effect for social media icons */
     .header__nav__social a, .footer__top__social a {
         transition: all 0.3s ease;
     }
@@ -83,15 +107,51 @@
         color: #00bfe7 !important;
     }
 
-    /* Footer text color */
-    .footer__option__item h5, .footer__option__item p, .footer__option__item ul li a {
-        color: white !important;
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-    }
-
-    /* Header alignment fix */
-    .header .row {
+    /* HEADER LAYOUT FIX & THEME BUTTON */
+    .header-right-controls {
+        display: flex;
         align-items: center;
+        gap: 25px;
+    }
+    .theme-btn {
+        background-color: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        color: var(--icon-color);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+    }
+    .theme-btn:hover {
+        border-color: #00bfe7;
+        color: #00bfe7;
+        transform: rotate(15deg);
+    }
+    
+    /* DESKTOP CARD ENHANCEMENTS */
+    @media (min-width: 992px) {
+        .services-page .col-lg-6 {
+            perspective: 1000px;
+        }
+
+        .services__item {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transform-style: preserve-3d;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .services__item:hover {
+            z-index: 10;
+        }
     }
 
     /* MOBILE VIEW STYLES */
@@ -109,13 +169,10 @@
             display: none !important;
         }
         .slicknav_menu .slicknav_btn .slicknav_icon-bar {
-            background-color: white !important;
+            background-color: var(--icon-color) !important;
         }
         .slicknav_nav a {
-            color: white !important;
-        }
-        .slicknav_nav a:hover {
-            color: #c0c0c0 !important;
+            color: var(--text-primary) !important;
         }
         .header__logo {
             font-size: 20px !important; 
@@ -133,7 +190,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
-                    <div class="header__logo" style="color: white; font-size: 24px; font-family: 'Sora', sans-serif; font-weight: 700;">
+                    <div class="header__logo" style="font-size: 24px; font-family: 'Sora', sans-serif; font-weight: 700;">
                         <a href="./index.html">RENDERQ MEDIA</a>
                     </div>
                 </div>
@@ -150,11 +207,18 @@
                                 <li><a href="./contact.html">Contact</a></li>
                             </ul>
                         </nav>
-                        <div class="header__nav__social">
-                            <a href="https://twitter.com/renderqmedia" target="_blank"><i class="fa fa-twitter"></i></a>
-                            <a href="https://www.instagram.com/renderqmedia/" target="_blank"><i class="fa fa-instagram"></i></a>
-                            <a href="https://www.linkedin.com/company/renderq-media-private-limited/?viewAsMember=true" target="_blank"><i class="fa fa-linkedin"></i></a>
-                            <a href="https://www.youtube.com/@renderqmedia" target="_blank"><i class="fa fa-youtube-play"></i></a>
+                        
+                        <div class="header-right-controls">
+                            <button id="theme-toggle-btn" class="theme-btn" aria-label="Toggle Theme">
+                                <i class="fa fa-moon-o" aria-hidden="true"></i>
+                            </button>
+
+                            <div class="header__nav__social">
+                                <a href="https://twitter.com/renderqmedia" target="_blank"><i class="fa fa-twitter"></i></a>
+                                <a href="https://www.instagram.com/renderqmedia/" target="_blank"><i class="fa fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/company/renderq-media-private-limited/?viewAsMember=true" target="_blank"><i class="fa fa-linkedin"></i></a>
+                                <a href="https://www.youtube.com/@renderqmedia" target="_blank"><i class="fa fa-youtube-play"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -162,6 +226,7 @@
             <div id="mobile-menu-wrap"></div>
         </div>
     </header>
+
     <div class="breadcrumb-option spad set-bg" data-setbg="img/breadcrumb-bg.jpg">
         <div class="container">
             <div class="row">
@@ -177,10 +242,11 @@
             </div>
         </div>
     </div>
+
     <section class="services-page spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-5">
                     <div class="services__item">
                         <div>
                             <img src="img/icons/si-3.png" alt="">
@@ -189,7 +255,7 @@
                         <p>Comprehensive film production services from script to screen</p>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-5">
                     <div class="services__item">
                         <div>
                             <img src="img/icons/si-1.png" alt="">
@@ -198,7 +264,7 @@
                         <p>Elevate your brand with captivating graphic design solutions tailored uniquely.</p>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-5">
                     <div class="services__item">
                         <div>
                             <img src="img/icons/si-2.png" alt="">
@@ -207,7 +273,7 @@
                         <p>Refine your visuals with expert photo and video editing services</p>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-5">
                     <div class="services__item">
                         <div>
                             <img src="img/icons/si-4.png" alt="">
@@ -219,6 +285,7 @@
             </div>
         </div>
     </section>
+
     <section class="callto sp__callto">
         <div class="container">
             <div class="callto__services spad set-bg" data-setbg="img/calltos-bg.jpg">
@@ -234,14 +301,13 @@
             </div>
         </div>
     </section>
-    <div class="logo spad">
-    </div>
+
     <footer class="footer">
         <div class="container">
             <div class="footer__top">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <div class="footer__top__logo" style="color: white; font-size: 24px; font-family: 'Sora', sans-serif; font-weight: 700;">
+                        <div class="footer__top__logo" style="font-size: 24px; font-family: 'Sora', sans-serif; font-weight: 700;">
                             RENDERQ MEDIA
                         </div>
                     </div>
@@ -269,7 +335,7 @@
                             <ul>
                                 <li><a href="#">Team</a></li>
                                 <li><a href="./careers.html" target="_blank">Careers</a></li>
-                                <li><a href="#">Contact us</a></li>
+                                <li><a href="contact.html">Contact us</a></li>
                                 <li><a href="#">Locations</a></li>
                             </ul>
                         </div>
@@ -291,6 +357,7 @@
             </div>
         </div>
     </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
@@ -314,6 +381,72 @@
       }
 
       requestAnimationFrame(raf)
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            const icon = themeToggleBtn.querySelector('i');
+
+            function applyTheme(theme) {
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark-mode');
+                    icon.classList.remove('fa-moon-o');
+                    icon.classList.add('fa-sun-o');
+                } else {
+                    document.documentElement.classList.remove('dark-mode');
+                    icon.classList.remove('fa-sun-o');
+                    icon.classList.add('fa-moon-o');
+                }
+            }
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            applyTheme(savedTheme);
+
+            themeToggleBtn.addEventListener('click', function() {
+                const currentTheme = localStorage.getItem('theme') || 'light';
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if ('ontouchstart' in window || navigator.maxTouchPoints) {
+                return;
+            }
+
+            const cards = document.querySelectorAll('.services__item');
+            const maxTilt = 6;
+
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const { left, top, width, height } = card.getBoundingClientRect();
+                    const x = e.clientX - left;
+                    const y = e.clientY - top;
+
+                    const centerX = width / 2;
+                    const centerY = height / 2;
+
+                    const deltaX = x - centerX;
+                    const deltaY = y - centerY;
+
+                    const rotateX = (deltaY / centerY) * -maxTilt;
+                    const rotateY = (deltaX / centerX) * maxTilt;
+
+                    card.style.transition = 'transform 0.25s ease-out';
+                    card.style.transform = `scale(1.05) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                    card.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 191, 231, 0.2)';
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transition = 'transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+                    card.style.transform = 'scale(1) perspective(1000px) rotateX(0deg) rotateY(0deg)';
+                    card.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
+                });
+            });
+        });
     </script>
 </body>
 
