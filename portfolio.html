@@ -24,15 +24,51 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
+    
 <style>
-    /* Apply the gradient to the entire page body and make it stationary */
-    body {
-        background-image: linear-gradient(to bottom, #0a0119, #0041ff) !important;
-        background-attachment: fixed;
-        background-size: cover;
+    /* ==================== THEME VARIABLES ==================== */
+    :root {
+        /* Light Mode (Default Blue Theme) */
+        --bg-gradient: linear-gradient(to bottom, #0a0119, #0041ff);
+        --text-primary: #ffffff;
+        --card-bg: rgba(10, 1, 25, 0.3);
+        --btn-border: #00bfe7;
+        --icon-color: #ffffff;
     }
 
-    /* Make all sections transparent so the body background shows through */
+    html.dark-mode {
+        /* Dark Mode (Black Theme) */
+        --bg-gradient: #000000;
+        --text-primary: #ffffff;
+        --card-bg: rgba(255, 255, 255, 0.1);
+        --btn-border: #00bfe7;
+        --icon-color: #ffffff;
+    }
+    /* ======================================================== */
+
+    body {
+        background-image: var(--bg-gradient) !important;
+        background-color: #000;
+        background-attachment: fixed;
+        background-size: cover;
+        color: var(--text-primary);
+        transition: background-image 0.5s ease, background-color 0.5s ease;
+    }
+    
+    .header__logo a, .header__nav__menu ul li a, .footer__copyright__text,
+    .footer__option__item h5, .footer__option__item p, .footer__option__item ul li a,
+    .breadcrumb__text h2, .breadcrumb__links a, .breadcrumb__links span, .portfolio__filter li {
+        color: var(--text-primary) !important;
+    }
+    
     .header, .services, .callto, .footer, .about, .testimonial, .services-page, .portfolio, .blog, .contact-widget, .contact, .breadcrumb-option {
         background: transparent !important;
     }
@@ -65,16 +101,16 @@
         left: 0;
         width: 30px;
         height: 30px;
-        border-top: 2px solid #00bfe7;
-        border-left: 2px solid #00bfe7;
+        border-top: 2px solid var(--btn-border);
+        border-left: 2px solid var(--btn-border);
     }
     .primary-btn::after {
         bottom: 0;
         right: 0;
         width: 30px;
         height: 30px;
-        border-bottom: 2px solid #00bfe7;
-        border-right: 2px solid #00bfe7;
+        border-bottom: 2px solid var(--btn-border);
+        border-right: 2px solid var(--btn-border);
     }
     .primary-btn:hover::before, .primary-btn:hover::after,
     .primary-btn:active::before, .primary-btn:active::after {
@@ -86,8 +122,8 @@
         border-radius: 8px;
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         transition: all 0.3s ease;
-        background: rgba(10, 1, 25, 0.3);
-        overflow: hidden; /* Keep thumbnail inside rounded corners */
+        background: var(--card-bg);
+        overflow: hidden;
     }
     .portfolio__item:hover {
         transform: translateY(-5px);
@@ -96,21 +132,35 @@
     
     .header__nav__social a, .footer__top__social a {
         transition: all 0.3s ease;
-        text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.8);
     }
     .header__nav__social a:hover, .footer__top__social a:hover {
         transform: scale(1.2);
         color: #00bfe7 !important;
-        text-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
     }
 
-    .footer__option__item h5, .footer__option__item p, .footer__option__item ul li a {
-        color: white !important;
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-    }
-
-    .header .row {
+    .header-right-controls {
+        display: flex;
         align-items: center;
+        gap: 25px;
+    }
+    .theme-btn {
+        background-color: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        color: var(--icon-color);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+    }
+    .theme-btn:hover {
+        border-color: #00bfe7;
+        color: #00bfe7;
+        transform: rotate(15deg);
     }
 
     /* MOBILE VIEW: Rules for mobile screens */
@@ -128,13 +178,10 @@
             display: none !important;
         }
         .slicknav_menu .slicknav_btn .slicknav_icon-bar {
-            background-color: white !important;
+            background-color: var(--icon-color) !important;
         }
         .slicknav_nav a {
-            color: white !important;
-        }
-        .slicknav_nav a:hover {
-            color: #c0c0c0 !important;
+            color: var(--text-primary) !important;
         }
         .header__logo {
             font-size: 20px !important; 
@@ -152,7 +199,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
-                    <div class="header__logo" style="color: white; font-size: 24px; font-family: 'Sora', sans-serif; font-weight: 700;">
+                    <div class="header__logo" style="font-size: 24px; font-family: 'Sora', sans-serif; font-weight: 700;">
                         <a href="./index.html">RENDERQ MEDIA</a>
                     </div>
                 </div>
@@ -169,11 +216,18 @@
                                 <li><a href="./contact.html">Contact</a></li>
                             </ul>
                         </nav>
-                        <div class="header__nav__social">
-                            <a href="https://twitter.com/renderqmedia" target="_blank"><i class="fa fa-twitter"></i></a>
-                            <a href="https://www.instagram.com/renderqmedia/" target="_blank"><i class="fa fa-instagram"></i></a>
-                            <a href="https://www.linkedin.com/company/renderq-media-private-limited/?viewAsMember=true" target="_blank"><i class="fa fa-linkedin"></i></a>
-                            <a href="https://www.youtube.com/@renderqmedia" target="_blank"><i class="fa fa-youtube-play"></i></a>
+                        
+                        <div class="header-right-controls">
+                            <button id="theme-toggle-btn" class="theme-btn" aria-label="Toggle Theme">
+                                <i class="fa fa-moon-o" aria-hidden="true"></i>
+                            </button>
+
+                            <div class="header__nav__social">
+                                <a href="https://twitter.com/renderqmedia" target="_blank"><i class="fa fa-twitter"></i></a>
+                                <a href="https://www.instagram.com/renderqmedia/" target="_blank"><i class="fa fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/company/renderq-media-private-limited/?viewAsMember=true" target="_blank"><i class="fa fa-linkedin"></i></a>
+                                <a href="https://www.youtube.com/@renderqmedia" target="_blank"><i class="fa fa-youtube-play"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -181,6 +235,7 @@
             <div id="mobile-menu-wrap"></div>
         </div>
     </header>
+
     <div class="breadcrumb-option spad set-bg" data-setbg="img/breadcrumb-bg.jpg">
         <div class="container">
             <div class="row">
@@ -196,6 +251,7 @@
             </div>
         </div>
     </div>
+
     <section class="portfolio spad">
         <div class="container">
             <div class="row">
@@ -395,12 +451,13 @@
             </div>
         </div>
     </section>
+
     <footer class="footer">
         <div class="container">
             <div class="footer__top">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <div class="footer__top__logo" style="color: white; font-size: 24px; font-family: 'Sora', sans-serif; font-weight: 700;">
+                        <div class="footer__top__logo" style="font-size: 24px; font-family: 'Sora', sans-serif; font-weight: 700;">
                             RENDERQ MEDIA
                         </div>
                     </div>
@@ -450,6 +507,7 @@
             </div>
         </div>
     </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
@@ -470,6 +528,34 @@
         requestAnimationFrame(raf);
       }
       requestAnimationFrame(raf);
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            const icon = themeToggleBtn.querySelector('i');
+
+            function applyTheme(theme) {
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark-mode');
+                    icon.classList.remove('fa-moon-o');
+                    icon.classList.add('fa-sun-o');
+                } else {
+                    document.documentElement.classList.remove('dark-mode');
+                    icon.classList.remove('fa-sun-o');
+                    icon.classList.add('fa-moon-o');
+                }
+            }
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            applyTheme(savedTheme);
+
+            themeToggleBtn.addEventListener('click', function() {
+                const currentTheme = localStorage.getItem('theme') || 'light';
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+            });
+        });
     </script>
 </body>
 
