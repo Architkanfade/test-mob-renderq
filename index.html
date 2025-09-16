@@ -210,76 +210,46 @@
     
     /* ============ DESKTOP CARD ENHANCEMENTS (PC VIEW ONLY) ============ */
     @media (min-width: 992px) {
+        /* Add perspective to the parent column for the 3D effect to work */
         .services .col-lg-6 {
             perspective: 1000px;
         }
 
         .services__item {
+            /* Adds the frosted glass effect */
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
             border: 1px solid rgba(255, 255, 255, 0.18);
-            transform-style: preserve-3d;
-            position: relative;
-            z-index: 1;
-            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            
+            /* Update transition for a smoother 3D hover */
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
-        
+
         .services__item:hover {
-            z-index: 10;
+            /* Applies the 3D tilt and a slight lift */
+            transform: scale(1.05) translateY(-10px) rotateX(8deg) rotateY(-6deg);
+            
+            /* Adds a stronger shadow and a subtle blue glow */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 191, 231, 0.2);
         }
     }
     /* ================================================================ */
 
-    /* MOBILE VIEW: Rules for mobile screens */
-    @media (max-width: 991px) { /* Changed from 768 to 991 to prevent overlap */
+    /* MOBILE AND TABLET VIEW: Rules for screens smaller than 992px */
+    @media (max-width: 991px) {
         .header { border-bottom: none !important; }
         .slicknav_menu { background: transparent !important; border: none !important; outline: none !important; box-shadow: none !important; }
         .slicknav_menu .slicknav_btn .slicknav_menutxt { display: none !important; }
         
         .slicknav_menu .slicknav_btn .slicknav_icon-bar {
-            background-color: var(--icon-color) !important;
-            height: 3px;
-            width: 28px;
-            margin: 5px auto;
-            transition: all 0.3s ease;
+            background-color: white !important;
         }
-
-        /* Make the mobile menu background transparent */
-        .slicknav_nav {
-            background-color: rgba(10, 1, 25, 0.93) !important;
-            padding: 20px !important;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Customizing the 'MENU' button itself */
-        .slicknav_btn {
-            background-color: #00bfe7 !important;
-            border-radius: 5px;
-            padding: 8px 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0, 191, 231, 0.4);
-            transition: all 0.3s ease;
-            right: 15px;
-            top: 15px;
-        }
-        .slicknav_btn:hover {
-            background-color: #00a0c0 !important;
-            box-shadow: 0 6px 20px rgba(0, 191, 231, 0.6);
-            transform: translateY(-1px);
-        }
-
-        /* Styling for menu items */
+        
         .slicknav_nav a {
-            color: var(--text-primary) !important;
-            padding: 10px 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: white !important;
         }
         .slicknav_nav a:hover {
-            color: #00bfe7 !important;
-            background-color: rgba(0, 191, 231, 0.1);
+            color: #c0c0c0 !important;
         }
         .slicknav_nav li:last-child a {
             border-bottom: none;
