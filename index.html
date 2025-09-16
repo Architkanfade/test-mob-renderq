@@ -285,7 +285,7 @@
                 <div class="col-lg-2">
                     <div class="header__logo" style="font-size: 24px; font-family: 'Sora', sans-serif; font-weight: 700;">
                         <a href="#">
-                            <img id="logo-img" src="img/logo/RENDER-Q-LOGO-3 Black.png" alt="RENDERQ MEDIA" style="height:70px;">
+                            <img id="logo-img" src="img/logo/RENDER-Q-LOGO-3.png" alt="RENDERQ MEDIA" style="height:70px;">
                         </a>
                     </div>
                 </div>
@@ -563,12 +563,13 @@
                     icon.classList.add('fa-sun-o');
                     logoImg.src = "img/logo/RENDER-Q-LOGO-3.png"; // White logo for dark mode
                 } else {
-                    document.documentElement.classList.remove('dark-mode');
-                    icon.classList.remove('fa-sun-o');
-                    icon.classList.add('fa-moon-o');
-                    logoImg.src = "img/logo/RENDER-Q-LOGO-3 Black.png"; // Black logo for light mode
+                        document.documentElement.classList.remove('dark-mode');
+                        icon.classList.remove('fa-sun-o');
+                        icon.classList.add('fa-moon-o');
+                         // This line now ensures the logo stays white in light mode
+                        logoImg.src = "img/logo/RENDER-Q-LOGO-3.png"; 
+                        }
                 }
-            }
             const savedTheme = localStorage.getItem('theme') || 'light';
             applyTheme(savedTheme);
 

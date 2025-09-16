@@ -8,77 +8,160 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>RenderQ Media - Contact</title>
-    <link rel="shortcut icon" href="img/logo/RQ-BlueBg 4.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/logo/RQ-BlueBg 4.png" type="image/x-icon" />
 
     <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap" rel="stylesheet">
-        
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap" rel="stylesheet" />
+
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
+
     
-<style>
-    /* Apply the gradient to the entire page body and make it stationary */
-    body {
-        background-image: linear-gradient(to bottom, #0a0119, #0041ff) !important;
-        background-attachment: fixed;
-        background-size: cover;
-    }
-
-    /* Make all sections transparent so the body background shows through */
-    .header, .services, .callto, .footer, .about, .testimonial, .services-page, .portfolio, .blog, .contact-widget, .contact, .breadcrumb-option {
-        background: transparent !important;
-    }
-    
-    .contact__form {
-        border-radius: 8px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        background: rgba(10, 1, 25, 0.3);
-        padding: 40px 35px;
-    }
-
-    .contact__map iframe {
-        border-radius: 8px;
-    }
-
-    .header .row {
-        align-items: center;
-    }
-
-    /* MOBILE VIEW: Rules for mobile screens */
-    @media (max-width: 991px) {
-        .header {
-            border-bottom: none !important;
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
         }
-        .slicknav_menu, .slicknav_btn {
+      </script>
+
+    <script>
+        // Immediately sets dark mode if specified in localStorage to prevent flashing
+        (function () {
+            const theme = localStorage.getItem("theme");
+            if (theme === "dark") {
+                document.documentElement.classList.add("dark-mode");
+            }
+        })();
+    </script>
+
+    <style>
+        /* ==================== THEME VARIABLES ==================== */
+        :root {
+            /* Light Mode (Default Blue Theme) */
+            --bg-gradient: linear-gradient(to bottom, #0a0119, #0041ff);
+            --text-primary: #ffffff;
+            --card-bg: rgba(10, 1, 25, 0.3);
+            --btn-border: #00bfe7;
+            --icon-color: #ffffff;
+        }
+
+        html.dark-mode {
+            /* Dark Mode (Black Theme) */
+            --bg-gradient: #000000;
+            --text-primary: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --btn-border: #00bfe7;
+            --icon-color: #ffffff;
+        }
+        /* ======================================================== */
+
+        body {
+            background-image: var(--bg-gradient) !important;
+            background-color: #000;
+            background-attachment: fixed;
+            background-size: cover;
+            color: var(--text-primary);
+            transition: background-image 0.5s ease, background-color 0.5s ease;
+        }
+        
+        /* Ensure text colors are consistent with the theme */
+        .header__logo a, .header__nav__menu ul li a, .footer__copyright__text,
+        .footer__option__item h5, .footer__option__item p, .footer__option__item ul li a,
+        .breadcrumb__text h2, .breadcrumb__links a, .breadcrumb__links span,
+        .contact__widget__item__text h4, .contact__widget__item__text p,
+        .contact__form h3 {
+            color: var(--text-primary) !important;
+        }
+
+        .header, .services, .callto, .footer, .about, .testimonial,
+        .services-page, .portfolio, .blog, .contact-widget, .contact, .breadcrumb-option {
             background: transparent !important;
-            border: none !important;
-            outline: none !important;
-            box-shadow: none !important;
         }
-        .slicknav_menu .slicknav_btn .slicknav_menutxt {
-            display: none !important;
+
+        /* ========= AESTHETIC UPGRADES: SHADOWS & DEPTH ========= */
+        .breadcrumb__text h2, .section-title h2 {
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
         }
-        .slicknav_menu .slicknav_btn .slicknav_icon-bar {
-            background-color: white !important;
+
+        .contact__form, .contact__map iframe, .contact__widget__item {
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            background: var(--card-bg);
+            transition: all 0.3s ease;
         }
-        .slicknav_nav a {
-            color: white !important;
+        .contact__widget__item {
+            padding: 30px;
         }
-        .slicknav_nav a:hover {
-            color: #c0c0c0 !important;
+
+        .header__nav__social a, .footer__top__social a {
+            transition: all 0.3s ease;
+            text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.8);
+        }
+        .header__nav__social a:hover, .footer__top__social a:hover {
+            transform: scale(1.2);
+            color: #00bfe7 !important;
+            text-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
+        }
+
+        /* HEADER LAYOUT FIX & THEME BUTTON */
+        .header-right-controls {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        .theme-btn {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            color: var(--icon-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .theme-btn:hover {
+            border-color: #00bfe7;
+            color: #00bfe7;
+            transform: rotate(15deg);
+        }
+        
+        .header .row .col-lg-2 {
+            align-self: flex-start;
         }
         .header__logo {
-            font-size: 20px !important; 
+            padding-top: 15px; 
         }
-    }
-</style>
+
+        /* MOBILE VIEW: Rules for mobile screens */
+        @media (max-width: 991px) {
+            .header { border-bottom: none !important; }
+            .slicknav_menu, .slicknav_btn { background: transparent !important; border: none !important; outline: none !important; box-shadow: none !important; }
+            .slicknav_menu .slicknav_btn .slicknav_menutxt { display: none !important; }
+            .slicknav_menu .slicknav_btn .slicknav_icon-bar { background-color: var(--icon-color) !important; }
+            .slicknav_nav a { color: var(--text-primary) !important; }
+            .header__logo { font-size: 20px !important; }
+        }
+    </style>
 </head>
 
 <body>
@@ -90,8 +173,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
-                    <div class="header__logo" style="color: white; font-size: 24px; font-family: 'Sora', sans-serif; font-weight: 700;">
-                        <a href="./index.html">RENDERQ MEDIA</a>
+                    <div class="header__logo">
+                        <a href="./index.html">
+                            <img id="logo-img" src="img/logo/RENDER-Q-LOGO-3.png" alt="RENDERQ MEDIA" style="height: 70px" />
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-10">
@@ -107,11 +192,16 @@
                                 <li class="active"><a href="./contact.html">Contact</a></li>
                             </ul>
                         </nav>
-                        <div class="header__nav__social">
-                            <a href="https://twitter.com/renderqmedia" target="_blank"><i class="fa fa-twitter"></i></a>
-                            <a href="https://www.instagram.com/renderqmedia/" target="_blank"><i class="fa fa-instagram"></i></a>
-                            <a href="https://www.linkedin.com/company/renderq-media-private-limited/?viewAsMember=true" target="_blank"><i class="fa fa-linkedin"></i></a>
-                            <a href="https://www.youtube.com/@renderqmedia" target="_blank"><i class="fa fa-youtube-play"></i></a>
+                        <div class="header-right-controls">
+                            <button id="theme-toggle-btn" class="theme-btn" aria-label="Toggle Theme">
+                                <i id="theme-icon" class="fa fa-moon-o"></i>
+                            </button>
+                            <div class="header__nav__social">
+                                <a href="https://twitter.com/renderqmedia" target="_blank"><i class="fa fa-twitter"></i></a>
+                                <a href="https://www.instagram.com/renderqmedia/" target="_blank"><i class="fa fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/company/renderq-media-private-limited/?viewAsMember=true" target="_blank"><i class="fa fa-linkedin"></i></a>
+                                <a href="https://www.youtube.com/@renderqmedia" target="_blank"><i class="fa fa-youtube-play"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -120,7 +210,7 @@
         </div>
     </header>
 
-    <div class="breadcrumb-option spad set-bg" data-setbg="img/breadcrumb-bg.jpg">
+    <div class="breadcrumb-option spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -157,7 +247,7 @@
                         </div>
                         <div class="contact__widget__item__text">
                             <h4>WhatsApp</h4>
-                            <p><a href="https://wa.me/8806228485?text=Hey RenderQ! I've a query." target="_blank">+91 8806228485 / +91 7887317958</a></p>
+                            <p><a href="https://wa.me/918806228485?text=Hey RenderQ! I've a query." target="_blank">+91 8806228485</a></p>
                         </div>
                     </div>
                 </div>
@@ -169,7 +259,6 @@
                         <div class="contact__widget__item__text">
                             <h4>Email</h4>
                             <p><a href="mailto:renderqmediapvtltd@gmail.com">renderqmediapvtltd@gmail.com</a></p>
-                            <p><a href="mailto:contact.rohitbhoyar@gmail.com">contact.rohitbhoyar@gmail.com</a></p>
                         </div>
                     </div>
                 </div>
@@ -209,7 +298,7 @@
             <div class="footer__top">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <div class="footer__top__logo" style="color: white; font-size: 24px; font-family: 'Sora', sans-serif; font-weight: 700;">
+                        <div class="footer__top__logo" style="font-size: 24px; font-family: 'Sora', sans-serif; font-weight: 700;">
                             RENDERQ MEDIA
                         </div>
                     </div>
@@ -237,7 +326,7 @@
                             <ul>
                                 <li><a href="#">Team</a></li>
                                 <li><a href="./careers.html" target="_blank">Careers</a></li>
-                                <li><a href="#">Contact us</a></li>
+                                <li><a href="./contact.html">Contact us</a></li>
                                 <li><a href="#">Locations</a></li>
                             </ul>
                         </div>
@@ -247,12 +336,14 @@
             <div class="footer__copyright">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <p class="footer__copyright__text">Copyright ©
+                        <p class="footer__copyright__text">
+                            Copyright &copy;
                             <script>
                                 document.write(new Date().getFullYear());
                             </script>
-                            All rights reserved | made with <i class="fa fa-heart-o"
-                                aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">RenderQ</a>
+                            All rights reserved | made with
+                            <i class="fa fa-heart-o" aria-hidden="true"></i> by
+                            <a href="./index.html">RenderQ</a>
                         </p>
                     </div>
                 </div>
@@ -271,19 +362,54 @@
 
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script>
-      const lenis = new Lenis({
-        duration: 2.4,
-        lerp: 0.05,
-        smoothWheel: true,
-      })
+        const lenis = new Lenis({
+            duration: 2.4,
+            lerp: 0.05,
+            smoothWheel: true,
+        });
 
-      function raf(time) {
-        lenis.raf(time)
-        requestAnimationFrame(raf)
-      }
-      requestAnimationFrame(raf)
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
     </script>
     
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            
+            if (themeToggleBtn) {
+                const icon = document.getElementById('theme-icon'); 
+                const logoImg = document.getElementById('logo-img');
+
+                function applyTheme(theme) {
+                    if (theme === 'dark') {
+                        document.documentElement.classList.add('dark-mode');
+                        icon.classList.remove('fa-moon-o');
+                        icon.classList.add('fa-sun-o');
+                        logoImg.src = "img/logo/RENDER-Q-LOGO-3.png"; // White logo for dark mode
+                    } else {
+                        document.documentElement.classList.remove('dark-mode');
+                        icon.classList.remove('fa-sun-o');
+                        icon.classList.add('fa-moon-o');
+                        logoImg.src = "img/logo/RENDER-Q-LOGO-3.png"; // Also white for light mode
+                    }
+                }
+
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                applyTheme(savedTheme);
+
+                themeToggleBtn.addEventListener('click', function() {
+                    const currentTheme = localStorage.getItem('theme') || 'light';
+                    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                    localStorage.setItem('theme', newTheme);
+                    applyTheme(newTheme);
+                });
+            }
+        });
+    </script>
+
 </body>
 
 </html>

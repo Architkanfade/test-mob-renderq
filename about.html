@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -11,7 +12,8 @@
     <link rel="shortcut icon" href="img/logo/RQ-BlueBg 4.png" type="image/x-icon">
 
     <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap"
+         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap" rel="stylesheet">
         
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
@@ -23,6 +25,19 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+      </script>
+      
     <script>
         (function() {
             const theme = localStorage.getItem('theme');
@@ -32,6 +47,14 @@
         })();
     </script>
     
+
+<style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+    }
+</style>
 <style>
     /* ==================== THEME VARIABLES ==================== */
     :root {
@@ -142,6 +165,17 @@
         align-items: center;
         gap: 25px;
     }
+
+    /* ▼▼▼ INSERT THE NEW CODE HERE ▼▼▼ */
+    .header .row .col-lg-2 {
+        align-self: flex-start;
+    }
+    .header__logo {
+        padding-top: 10px; /* Adjust this value as needed */
+    }
+    /* ▲▲▲ END OF NEW CODE ▲▲▲ */
+
+    
     .theme-btn {
         background-color: transparent;
         border: 1px solid rgba(255, 255, 255, 0.8);
@@ -171,6 +205,8 @@
         .slicknav_nav a { color: var(--text-primary) !important; }
         .header__logo { font-size: 20px !important; }
     }
+
+    
 </style>
 </head>
 
@@ -184,7 +220,9 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo" style="font-size: 24px; font-family: 'Sora', sans-serif; font-weight: 700;">
-                        <a href="./index.html">RENDERQ MEDIA</a>
+                        <a href="#">
+                            <img id="logo-img" src="img/logo/RENDER-Q-LOGO-3.png" alt="RENDERQ MEDIA" style="height:70px;">
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-10">
@@ -323,7 +361,7 @@
                             </div>
                             <div class="testimonial__author">
                                 <div class="testimonial__author__pic">
-                                    <img src="img/reviews//Rakshita.jpeg" alt="" />
+                                    <img src="img/reviews/Rakshita.jpeg" alt="" />
                                 </div>
                                 <div class="testimonial__author__text">
                                     <h5>Rakshita Singh</h5>
@@ -420,32 +458,36 @@
     </script>
     
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+         document.addEventListener('DOMContentLoaded', function() {
             const themeToggleBtn = document.getElementById('theme-toggle-btn');
             const icon = themeToggleBtn.querySelector('i');
+            // --- ADD THIS LINE ---
+            const logoImg = document.getElementById('logo-img');
 
             function applyTheme(theme) {
-                if (theme === 'dark') {
+                    if (theme === 'dark') {
                     document.documentElement.classList.add('dark-mode');
                     icon.classList.remove('fa-moon-o');
                     icon.classList.add('fa-sun-o');
+                    // --- ADD THIS LINE ---
+                    logoImg.src = "img/logo/RENDER-Q-LOGO-3.png"; // White logo for dark mode
                 } else {
                     document.documentElement.classList.remove('dark-mode');
                     icon.classList.remove('fa-sun-o');
                     icon.classList.add('fa-moon-o');
+                    // --- ADD THIS LINE ---
+                    logoImg.src = "img/logo/RENDER-Q-LOGO-3.png"; // Also white logo for light mode
                 }
             }
             const savedTheme = localStorage.getItem('theme') || 'light';
             applyTheme(savedTheme);
-
-            themeToggleBtn.addEventListener('click', function() {
+                themeToggleBtn.addEventListener('click', function() {
                 const currentTheme = localStorage.getItem('theme') || 'light';
                 const newTheme = currentTheme === 'light' ? 'dark' : 'light';
                 localStorage.setItem('theme', newTheme);
                 applyTheme(newTheme);
-            });
-        });
-    </script>
+        });});
+</script>
 </body>
 
 </html>

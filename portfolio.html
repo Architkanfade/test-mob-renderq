@@ -24,6 +24,19 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+      </script>
+      
     <script>
         (function() {
             const theme = localStorage.getItem('theme');
@@ -200,7 +213,9 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo" style="font-size: 24px; font-family: 'Sora', sans-serif; font-weight: 700;">
-                        <a href="./index.html">RENDERQ MEDIA</a>
+                        <a href="#">
+                            <img id="logo-img" src="img/logo/RENDER-Q-LOGO-3.png" alt="RENDERQ MEDIA" style="height:70px;">
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-10">
